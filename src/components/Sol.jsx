@@ -10,7 +10,6 @@ export function Sol({ sol, id }) {
   const avgWind = sol?.['HWS']?.['av']
   const firstUTC = sol?.['First_UTC']
   const season = sol?.['Season']
-  console.log(sol);
   
   return (
       <Link to={`/details/${id}`}>

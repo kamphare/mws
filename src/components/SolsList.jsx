@@ -10,8 +10,6 @@ export function SolsList() {
     const res = await fetch(URL);
     const sols = await res.json();
     setSols(sols);
-    console.log(sols);
-
   }
 
   useEffect(() => {

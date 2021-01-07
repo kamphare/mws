@@ -2,11 +2,9 @@ import { React } from 'react';
 
 export function DetailsTable({ min, max, avg, unit, label, samples}) {
   
-  console.log(min)
   if (!min) return null;
 
   function round(num, unit) {
-    console.log(num);
     if (num === "N/A") {
       return num;
     } 
