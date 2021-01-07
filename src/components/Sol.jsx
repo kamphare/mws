@@ -1,13 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { ValidateFalsey } from '../utils/ValidateFalsey'
 
 export function Sol({ sol, id }) {
   
-  if (!sol['AT']) return null;
-  const avgTemp = sol['AT']['av']
-  const avgWind = sol['HWS']['av']
-  const firstUTC = sol['First_UTC']
-  const season = sol['Season']
+  if (!sol) return null;
+  
+  const avgTemp = sol?.['AT']?.['av']
+  const avgWind = sol?.['HWS']?.['av']
+  const firstUTC = sol?.['First_UTC']
+  const season = sol?.['Season']
+  console.log(sol);
   
   return (
       <Link to={`/details/${id}`}>
@@ -17,16 +20,16 @@ export function Sol({ sol, id }) {
             <h2 className="orange">{id}</h2>
           </div>
           <div className="card__sub-heading yellow">
-            {firstUTC}
+            {ValidateFalsey(firstUTC)}
           </div>
           <div className="card__content grid--card-details">
             <div className="card__content-description">Avg. Temperature:</div>
-            <div className="card__content-detail highlight yellow">{avgTemp}</div>
+            <div className="card__content-detail highlight yellow">{avgTemp ? avgTemp : "N/A"}</div>
             <div className="card__content-description">Average Wind:</div>
-            <div className="card__content-detail highlight yellow">{avgWind}</div>
+            <div className="card__content-detail highlight yellow">{avgWind ? avgWind : "N/A"}</div>
           </div>
           <div className="card__footer">
-            <h4 className="orange">{season}</h4>
+            <h4 className="orange">{season ? season : "N/A"}</h4>
           </div>
         </div>
       </Link>

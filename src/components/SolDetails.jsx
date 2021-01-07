@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import { DetailsTable } from './DetailsTable'
+import { ValidateFalsey } from '../utils/ValidateFalsey'
 const key = process.env.REACT_APP_API_KEY;
 const URL = `https://api.nasa.gov/insight_weather/?api_key=${key}&feedtype=json&ver=1.0`;
 
@@ -23,17 +24,17 @@ export function SolDetails() {
     getSol();
   }, [])
   
-  if (!sol['Season']) return null;
-  const minTemp = sol['AT']['mn']
-  const maxTemp = sol['AT']['mx']
-  const avgTemp = sol['AT']['av']
-  const tempSamples = sol['AT']['ct']
-  const minWind = sol['HWS']['mn']
-  const maxWind = sol['HWS']['mx']
-  const avgWind = sol['HWS']['av']
-  const windSamples = sol['AT']['ct']
-  const firstUTC = sol['First_UTC']
-  const LastUTC = sol['Last_UTC']
+  if (!sol) return null;
+  const minTemp = ValidateFalsey(sol?.['AT']?.['mn'])
+  const maxTemp = ValidateFalsey(sol?.['AT']?.['mx'])
+  const avgTemp = ValidateFalsey(sol?.['AT']?.['av'])
+  const tempSamples = ValidateFalsey(sol?.['AT']?.['ct'])
+  const minWind = ValidateFalsey(sol?.['HWS']?.['mn'])
+  const maxWind = ValidateFalsey(sol?.['HWS']?.['mx'])
+  const avgWind = ValidateFalsey(sol?.['HWS']?.['av'])
+  const windSamples = ValidateFalsey(sol?.['AT']?.['ct'])
+  const firstUTC = ValidateFalsey(sol?.['First_UTC'])
+  const LastUTC = ValidateFalsey(sol?.['Last_UTC'])
 
   return (
     <div>

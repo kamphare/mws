@@ -25,6 +25,7 @@ export function SolsList() {
       <div className="content__header">
         <h1>Latest Weather at Elysium Planitia</h1>
         <h2>InSight is taking daily weather measurements (temperature, wind, pressure) on the surface of Mars at Elysium Planitia, a flat, smooth plain near Mars’ equator.</h2>
+        <div className="warning">Note: the data often changes and might be complete</div>
       </div>
       <div className="content__body grid--cards">
       {
